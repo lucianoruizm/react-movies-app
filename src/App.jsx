@@ -16,12 +16,10 @@ export function App() {
         <Link to="/">
           <h1 className={styles.title}>Movies</h1>
         </Link>
-        <Link to="/">Home</Link>
-        <Link to="/movie">Movies</Link>
       </header>
       <main>
       <Switch>
-          <Route exact path="/movie">
+          <Route exact path="/movies/:movieId">
             <MovieDetails />
           </Route>
           <Route path="/">
