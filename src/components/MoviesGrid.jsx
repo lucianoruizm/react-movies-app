@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { get } from '../utils/httpClient';
+import { useQuery } from '../hooks/useQuery';
 import { MoviesCard } from './MoviesCard';
 import styles from './MoviesGrid.module.css';
 import { Spinner } from './Spinner';
-
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
 
 export function MoviesGrid () {
 
@@ -16,7 +12,6 @@ export function MoviesGrid () {
     
     const query = useQuery();
     const search = query.get("search");
-    console.log(search);
 
     useEffect(() => {
         const searchUrl = search 
