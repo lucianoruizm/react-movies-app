@@ -1,15 +1,13 @@
 import styles from "./Search.module.css";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useQuery } from "../hooks/useQuery";
+import { useSearchParams } from "react-router-dom";
 
 export function Search() {
-    const query = useQuery();
+    const [query, setQuery] = useSearchParams();
     const search = query.get("search");
 
     const [searchText, setSearchText] = useState("");
-    const history = useHistory();
 
     useEffect(() => {
         setSearchText(search || "");
@@ -17,7 +15,8 @@ export function Search() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push("/?search=" + searchText)
+        setQuery({search: searchText})
+        // navigate("/?search=" + searchText)
     }
 
     return (
